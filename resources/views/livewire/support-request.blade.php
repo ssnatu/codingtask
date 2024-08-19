@@ -4,7 +4,8 @@
 
         <div class="message">
             @if (session()->has('success'))   
-                <div class="flex alert-success" role="alert">
+                <div class="flex alert-success" role="alert" 
+                    x-data="{ show: true }" x-init="setTimeout(() => { show = false }, 5000)" x-show="show">
                     {{ session('success') }}
                 </div>
             @endif
@@ -12,7 +13,8 @@
 
         <div class="message">
             @if (session()->has('error'))   
-                <div class="flex alert-danger" role="alert">
+                <div class="flex alert-danger" role="alert"
+                    x-data="{ show: true }" x-init="setTimeout(() => { show = false }, 5000)" x-show="show">
                     <span class="font-medium">Error! &nbsp;</span>{{ session('error') }}
                 </div>
             @endif
@@ -33,7 +35,9 @@
 <script>
     function scrollToTop() {
         setTimeout(() => {
+            //grecaptcha.reset(); // reset captcha
             window.scrollTo({top: 0, behavior: 'smooth'});
         }, 1000);
     }
 </script>
+
